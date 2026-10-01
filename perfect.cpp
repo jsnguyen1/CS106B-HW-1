@@ -93,13 +93,13 @@ long findNthPerfectEuclid(long n) {
     int count = 0;
     int k = 1;
 
-    while(true){
+    while(count <= n){
         int m = (pow(2,k)) - 1; //calculate mersenne number
 
         if(divisorSum(m) == 1){ // if mersenne number is prime, increment the count of perfect numbers.
             count++;
-            if (count == n){ // if the count eventually equals the nth perfect number, break the while loop and return the value
-                break;
+            if (count == n){ // if the count eventually equals the nth perfect number, return the value
+                return (pow(2,k-1)) * (pow(2,k) - 1);
             }
         }
         else{ // if the mersenne number isnt prime, increment k to move on to the next power.
