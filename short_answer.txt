@@ -39,7 +39,9 @@ will never execute, since one of the conditions is that divisor is less than n. 
 evaluates to false. Therefore our tests will still pass.
 
 Q6. Explain your testing strategy for `smarterSum` and how you chose your specific test cases that lead you to be confident the function is working correctly.
-A6. TODO
+A6. Because we know that divisorSum(n) works as expected, we can compare output values in our test cases. I first wanted to test general cases such as correctly summing a positive integer that was a perfect number and non perfect number like 6 and 9. This tested the expected use of the smarterSum function. After this, I tested simple edge
+cases like negative numbers and 0 for checking if the function handled unique input values. Finally, I wrote a test which used a number that was a perfect square. This actually did result in an error for which we had to fix. Anytime the divisor reached an iteration where it equaled the perfect square of number n, it would
+essentially add the number to the total twice. Through this test, I was able to add a condition checking if it was a perfect square.
 
 Q7. Record your timing results for `findPerfectsSmarter` into a table.
 A7. TODO

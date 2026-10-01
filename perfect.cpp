@@ -73,15 +73,17 @@ long smarterSum(long n) {
  * header comment.
  */
 bool isPerfectSmarter(long n) {
-    /* TODO: Fill in this function. */
-    return false;
+    return (n != 0) && (n == smarterSum(n));
 }
 
-/* TODO: Replace this comment with a descriptive function
- * header comment.
- */
 void findPerfectsSmarter(long stop) {
-     /* TODO: Fill in this function. */
+    for (long num = 1; num < stop; num++) {
+        if (isPerfect(num)) {
+            cout << "Found smarter perfect number: " << num << endl;
+        }
+        if (num % 10000 == 0) cout << "." << flush; // progress bar
+    }
+    cout << endl << "Done searching up to " << stop << endl;
 }
 
 /* TODO: Replace this comment with a descriptive function
@@ -155,6 +157,10 @@ STUDENT_TEST("testing smarterSum(n)"){
     EXPECT_EQUAL(smarterSum(-1), divisorSum(-1));
     EXPECT_EQUAL(smarterSum(25), divisorSum(25));
     EXPECT_EQUAL(smarterSum(0), divisorSum(0));
+}
+
+STUDENT_TEST("Multiple time trials of findPerfectsSmarter on increasing input sizes") {
+    TIME_OPERATION(200000, findPerfectsSmarter(200000));
 }
 
 /*
