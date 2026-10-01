@@ -11,7 +11,18 @@ Q1. Roughly how long did it take your computer to do the search? How many perfec
 A1. By looking at a clock it took roughly 00.23 seconds to do the search. There were four perfect numbers it found which included 6, 28, 496, and 8128.
 
 Q2. Make a table of the timing results for `findPerfects` that you observed. (old-school table of text rows and columns is just fine)
-A2. TODO
+A2.
+
+Input Size      Time
++--------------+--------------+
+|              |              |
++--------------+--------------+
+|              |              |
++--------------+--------------+
+|              |              |
++--------------+--------------+
+|              |              |
++--------------+--------------+
 
 Q3. Does it take the same amount of work to compute `isPerfect` on the number 10 as it does on the number 1000? Why or why not? Does it take the same amount of work for `findPerfects` to search the range of numbers from 1-1000 as it does to search the numbers from 1000-2000? Why or why not?
 A3. TODO
