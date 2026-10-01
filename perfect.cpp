@@ -99,7 +99,7 @@ long findNthPerfectEuclid(long n) {
         if(divisorSum(m) == 1){ // if mersenne number is prime, increment the count of perfect numbers.
             count++;
             if (count == n){ // if the count eventually equals the nth perfect number, return the value
-                return (pow(2,k-1)) * (pow(2,k) - 1);
+                break;
             }
             k++;
         }
