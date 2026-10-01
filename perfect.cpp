@@ -56,10 +56,11 @@ void findPerfects(long stop) {
  */
 long smarterSum(long n) {
     long total = 0;
-    for (long divisor = 1; divisor <= sqrt(n); divisor++) {
+    double root = sqrt(n);
+    for (long divisor = 1; divisor <= root; divisor++) {
         if (n % divisor == 0) {
             total += divisor;
-            if (divisor != 1 && divisor != sqrt(n)){
+            if (divisor != 1 && divisor != root){
                 total += n/divisor;
             }
         }
