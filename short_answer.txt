@@ -34,7 +34,9 @@ A4. We know that doubling the input size quadruples the time. If we take 500000 
 
 
 Q5. Do any of the tests still pass even with this broken function? Why or why not?
-A5. TODO
+A5. Yes the tests still pass. isPerfect evaluates to true when two conditions are met, namely when n is not equal to 0 and n is equal to the divisior sum. For negative numbers, the first condition will be met. However, even adding the bug of initalizing total to 1 still passes false. This is because the for loop in divisorSum
+will never execute, since one of the conditions is that divisor is less than n. Because divisor starts at 1, this condition is never met, thus the for loop will not execute and the total will stay 1. Because the total is still not equal to n (where n is any negative number), that part of the isPerfect condition check still
+evaluates to false. Therefore our tests will still pass.
 
 Q6. Explain your testing strategy for `smarterSum` and how you chose your specific test cases that lead you to be confident the function is working correctly.
 A6. TODO

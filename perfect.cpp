@@ -19,7 +19,7 @@ using namespace std;
  * treat it like you would an int.
  */
 long divisorSum(long n) {
-    long total = 1;
+    long total = 0;
     for (long divisor = 1; divisor < n; divisor++) {
         if (n % divisor == 0) {
             total += divisor;
