@@ -56,8 +56,18 @@ void findPerfects(long stop) {
  */
 long smarterSum(long n) {
     /* TODO: Fill in this function. */
-    return 0;
+    long total = 0;
+    for (long divisor = 1; divisor < sqrt(n); divisor++) {
+        if (n % divisor == 0) {
+            total += divisor;
+            if (divisor != 1){
+                total += n/divisor;
+            }
+        }
+    }
+    return total;
 }
+
 
 /* TODO: Replace this comment with a descriptive function
  * header comment.
@@ -119,6 +129,12 @@ PROVIDED_TEST("Time trial of findPerfects on input size 1000") {
     TIME_OPERATION(1000, findPerfects(1000));
 }
 
+
+
+
+// TODO: add your student test cases here
+
+
 /*STUDENT_TEST("Create time trials") {
 
     TIME_OPERATION(62500, findPerfects(62500));
@@ -128,14 +144,15 @@ PROVIDED_TEST("Time trial of findPerfects on input size 1000") {
 
 }*/
 
-STUDENT_TEST("testing isPerfect() on negative numbers"){
+/*STUDENT_TEST("testing isPerfect(n) on negative numbers"){
     EXPECT(!isPerfect(-1));
     EXPECT(!isPerfect(-100));
     EXPECT(!isPerfect(-10000));
+}*/
+
+STUDENT_TEST("testing smarterSum(n)"){
+    EXPECT(isPerfect(6));
 }
-
-
-// TODO: add your student test cases here
 
 /*
  * Below is a suggestion of how to use a loop to set the input sizes
