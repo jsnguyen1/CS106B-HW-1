@@ -120,7 +120,7 @@ PROVIDED_TEST("Time trial of findPerfects on input size 1000") {
 }
 
 STUDENT_TEST("Create time trials") {
-    TIME_OPERATION(10000, findPerfects(10000));
+    TIME_OPERATION(100000, findPerfects(10000));
 }
 
 
