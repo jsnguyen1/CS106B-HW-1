@@ -15,20 +15,23 @@ A2.
 
 Input Size      Time
 +--------------+--------------+
-|              |              |
+|   62500      |  .968 secs   |
 +--------------+--------------+
-|              |              |
+|  125000      |  3.923 secs  |
 +--------------+--------------+
-|              |              |
+|  250000      |  15.497 secs |
 +--------------+--------------+
-|              |              |
+|  500000      |  61.502 secs |
 +--------------+--------------+
 
 Q3. Does it take the same amount of work to compute `isPerfect` on the number 10 as it does on the number 1000? Why or why not? Does it take the same amount of work for `findPerfects` to search the range of numbers from 1-1000 as it does to search the numbers from 1000-2000? Why or why not?
-A3. TODO
+A3. It doesn't take the same amount of work to compute 10 versus 1000. This is because 10 only needs to check all numbers from 1 - 9 as divisors. 1000 would need to check numbers from 1 - 999 as divisors, which will take much longer. Additionally, searching the range of numbers from 1-1000 is still faster than
+numbers 1000 - 2000. This is because searching 1 - 1000 will only take divisors from 1 to 1000, however searching 1000-2000 also starts the divisor count at 1, but will eventually pass 1000 up until 2000.
 
 Q4. Extrapolate from the data you gathered and make a prediction: how long will it take `findPerfects` to reach the fifth perfect number?
-A4. TODO
+A4. We know that doubling the input size quadruples the time. If we take 500000 as 61.502 seconds,we can setup an equation to see how many times we double the number to reach 33 million. This number is roughly 6 (which equates to 32 million: 500000 * 2^6). This means that we can then quadruple the duration 6 times as well.
+61.502*4^6 is 251912 seconds. Dividing by 86,400 (amount of seconds in days) yields a result of 2.92 days.
+
 
 Q5. Do any of the tests still pass even with this broken function? Why or why not?
 A5. TODO

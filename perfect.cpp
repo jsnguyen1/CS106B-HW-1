@@ -119,13 +119,19 @@ PROVIDED_TEST("Time trial of findPerfects on input size 1000") {
     TIME_OPERATION(1000, findPerfects(1000));
 }
 
-STUDENT_TEST("Create time trials") {
+/*STUDENT_TEST("Create time trials") {
 
     TIME_OPERATION(62500, findPerfects(62500));
     TIME_OPERATION(125000, findPerfects(125000));
     TIME_OPERATION(250000, findPerfects(250000));
     TIME_OPERATION(500000, findPerfects(500000));
 
+}*/
+
+STUDENT_TEST("testing isPerfect() on negative numbers"){
+    EXPECT(!isPerfect(-1));
+    EXPECT(!isPerfect(-100));
+    EXPECT(!isPerfect(-10000));
 }
 
 
