@@ -151,7 +151,7 @@ PROVIDED_TEST("Time trial of findPerfects on input size 1000") {
 }*/
 
 STUDENT_TEST("testing smarterSum(n)"){
-    EXPECT(isPerfect(5));
+    EXPECT_EQUAL(smarterSum(6), 6);
 }
 
 /*
