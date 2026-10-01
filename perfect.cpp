@@ -19,7 +19,7 @@ using namespace std;
  * treat it like you would an int.
  */
 long divisorSum(long n) {
-    long total = 0;
+    long total = 1;
     for (long divisor = 1; divisor < n; divisor++) {
         if (n % divisor == 0) {
             total += divisor;
@@ -129,7 +129,7 @@ PROVIDED_TEST("Time trial of findPerfects on input size 1000") {
 }*/
 
 STUDENT_TEST("testing isPerfect() on negative numbers"){
-    EXPECT(isPerfect(-1));
+    EXPECT(!isPerfect(-1));
     EXPECT(!isPerfect(-100));
     EXPECT(!isPerfect(-10000));
 }
