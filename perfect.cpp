@@ -184,11 +184,15 @@ PROVIDED_TEST("Time trial of findPerfects on input size 1000") {
 
 STUDENT_TEST("Test findNthPerfectEuclid(n)"){
 
-    EXPECT_EQUAL(findNthPerfectEuclid(2), 28);
+    EXPECT_EQUAL(findNthPerfectEuclid(1), 6);
+
+    EXPECT_EQUAL(findNthPerfectEuclid(3), 496);
+
+    EXPECT_EQUAL(findNthPerfectEuclid(5), 33550336);
 
     EXPECT(isPerfect(findNthPerfectEuclid(3)));
 
-    EXPECT_EQUAL(findNthPerfectEuclid(5), 33550336);
+
 }
 
 /*
