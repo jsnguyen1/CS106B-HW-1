@@ -101,6 +101,7 @@ long findNthPerfectEuclid(long n) {
             if (count == n){ // if the count eventually equals the nth perfect number, return the value
                 return (pow(2,k-1)) * (pow(2,k) - 1);
             }
+            k++;
         }
         else{ // if the mersenne number isnt prime, increment k to move on to the next power.
             k++;
