@@ -77,7 +77,7 @@ bool isPerfectSmarter(long n) {
 
 void findPerfectsSmarter(long stop) {
     for (long num = 1; num < stop; num++) {
-        if (isPerfect(num)) {
+        if (isPerfectSmarter(num)) {
             cout << "Found smarter perfect number: " << num << endl;
         }
         if (num % 10000 == 0) cout << "." << flush; // progress bar
