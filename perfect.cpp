@@ -159,7 +159,7 @@ STUDENT_TEST("testing smarterSum(n)"){
 }
 
 STUDENT_TEST("Multiple time trials of findPerfectsSmarter on increasing input sizes") {
-    TIME_OPERATION(500000, findPerfectsSmarter(500000));
+    TIME_OPERATION(5000000, findPerfectsSmarter(5000000));
 }
 
 /*
