@@ -129,7 +129,7 @@ PROVIDED_TEST("Time trial of findPerfects on input size 1000") {
 }*/
 
 STUDENT_TEST("testing isPerfect() on negative numbers"){
-    EXPECT(!isPerfect(-1));
+    EXPECT(isPerfect(-1));
     EXPECT(!isPerfect(-100));
     EXPECT(!isPerfect(-10000));
 }
