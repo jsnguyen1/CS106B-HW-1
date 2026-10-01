@@ -44,13 +44,25 @@ cases like negative numbers and 0 for checking if the function handled unique in
 essentially add the number to the total twice. Through this test, I was able to add a condition checking if it was a perfect square.
 
 Q7. Record your timing results for `findPerfectsSmarter` into a table.
-A7. TODO
+A7.
+
+Input Size      Time
++--------------+--------------+
+|  1875000     |  3.189 secs  |
++--------------+--------------+
+|  3750000     |  8.183 secs  |
++--------------+--------------+
+|  7500000     |  22.158 secs |
++--------------+--------------+
+|  15000000    |  60.642 secs |
++--------------+--------------+
 
 Q8. Make a prediction: how long will `findPerfectsSmarter` take to reach the fifth perfect number?
-A8. TODO
+A8. If the growth rate of the algorithim is N sqrt(N), then we take simplify this expression to be N^3/2. You can make a ratio between two input sizes, where one is double the other. You can then create a ratio of N^3/2 between the two inputs. This yields a ratio of roughly 2.83, which is the multiplier. However, to get near 33 million, we can find the multiplier by diving 33 million by our
+last value of 15 million. This yields 2.2, which is close to doubling but not exact. To find the multiplier, plug in 2.2 to the N^3/2 to get a multiplier, which is 3.26. Then multiply 60.642 seconds by 3.26 to get 198 seconds.
 
 Q9. Explain how you chose your specific test cases and why they lead you to be confident `findNthPerfectEuclid` is working correctly.
-A9. TODO
+A9.
 
 Soundex
 -------

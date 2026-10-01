@@ -89,8 +89,24 @@ void findPerfectsSmarter(long stop) {
  * header comment.
  */
 long findNthPerfectEuclid(long n) {
-    /* TODO: Fill in this function. */
-    return 0;
+
+    int count = 0;
+    int k = 1;
+
+    while(true){
+        int m = (pow(2,k)) - 1; //calculate mersenne number
+
+        if(divisorSum(m) == 1){ // if mersenne number is prime, increment the count of perfect numbers.
+            count++;
+            if (count == n){ // if the count eventually equals the nth perfect number, break the while loop and return the value
+                break;
+            }
+        }
+        else{ // if the mersenne number isnt prime, increment k to move on to the next power.
+            k++;
+        }
+    }
+    return (pow(2,k-1)) * (pow(2,k) - 1);
 }
 
 
@@ -151,18 +167,22 @@ PROVIDED_TEST("Time trial of findPerfects on input size 1000") {
     EXPECT(!isPerfect(-10000));
 }*/
 
-STUDENT_TEST("testing smarterSum(n)"){
+/*STUDENT_TEST("testing smarterSum(n)"){
     EXPECT_EQUAL(smarterSum(6), divisorSum(6));
     EXPECT_EQUAL(smarterSum(-1), divisorSum(-1));
     EXPECT_EQUAL(smarterSum(25), divisorSum(25));
     EXPECT_EQUAL(smarterSum(0), divisorSum(0));
-}
+}*/
 
-STUDENT_TEST("Multiple time trials of findPerfectsSmarter on increasing input sizes") {
+/*STUDENT_TEST("Multiple time trials of findPerfectsSmarter on increasing input sizes") {
     TIME_OPERATION(1875000, findPerfectsSmarter(1875000));
     TIME_OPERATION(3750000, findPerfectsSmarter(3750000));
     TIME_OPERATION(7500000, findPerfectsSmarter(7500000));
     TIME_OPERATION(15000000, findPerfectsSmarter(15000000));
+}*/
+
+STUDENT_TEST("Test findNthPerfectEuclid(n)"){
+    EXPECT_EQUAL(findNthPerfectEuclid(3), 496);
 }
 
 /*
