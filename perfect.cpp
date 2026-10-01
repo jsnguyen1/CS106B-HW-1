@@ -119,6 +119,10 @@ PROVIDED_TEST("Time trial of findPerfects on input size 1000") {
     TIME_OPERATION(1000, findPerfects(1000));
 }
 
+STUDENT_TEST("Create time trials") {
+    TIME_OPERATION(10000, findPerfects(10000));
+}
+
 
 // TODO: add your student test cases here
 
