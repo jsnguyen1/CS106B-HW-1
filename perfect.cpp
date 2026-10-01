@@ -60,7 +60,7 @@ long smarterSum(long n) {
     for (long divisor = 1; divisor <= sqrt(n); divisor++) {
         if (n % divisor == 0) {
             total += divisor;
-            if (divisor != 1){
+            if (divisor != 1 && divisor != sqrt(n)){
                 total += n/divisor;
             }
         }
