@@ -36,6 +36,39 @@ string lettersOnly(string s) {
     return result;
 }
 
+string encodeLetters(string s) {
+    string result = "";
+    for (char ch : s) {
+        if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'h' || ch == 'w' || ch == 'y'){
+            result += "0";
+        }
+        else if(ch == 'b' || ch == 'f' || ch == 'p' || ch == 'v'){
+            result += "1";
+        }
+
+        else if(ch == 'c' || ch == 'g' || ch == 'j' || ch == 'k' || ch == 'q' || ch == 's' || ch == 'x' || ch == 'z'){
+            result += "2";
+        }
+
+        else if(ch == 'd' || ch == 't'){
+            result += "3";
+        }
+
+        else if(ch == 'l'){
+            result += "4";
+        }
+
+        else if(ch == 'm' || ch == 'n'){
+            result += '5';
+        }
+
+        else{
+            result += '6';
+        }
+    }
+
+    return result;
+}
 
 /* TODO: Replace this comment with a descriptive function
  * header comment.
@@ -139,6 +172,10 @@ PROVIDED_TEST("Ashcraft is not a special case") {
     // Some versions of Soundex make special case for consecutive codes split by hw
     // We do not make this special case, just treat same as codes split by vowel
     EXPECT_EQUAL(soundex("Ashcraft"), "A226");
+}
+
+STUDENT_TEST("test encodeLetters()"){
+    EXPECT_EQUAL(encodeLetters("pwew"), "1000");
 }
 
 // TODO: add your test cases here
