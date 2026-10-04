@@ -175,7 +175,7 @@ PROVIDED_TEST("Ashcraft is not a special case") {
 }
 
 STUDENT_TEST("test encodeLetters()"){
-    EXPECT_EQUAL(encodeLetters("pwew"), "1000");
+    EXPECT_EQUAL(encodeLetters("PWEW"), "1000");
 }
 
 // TODO: add your test cases here
