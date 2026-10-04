@@ -123,7 +123,7 @@ PROVIDED_TEST("Test exclude of punctuation, digits, and spaces") {
     result = lettersOnly(s);
     EXPECT_EQUAL(result, "tldr");
 
-    s = "5Planet";
+    s = "5Pl-anet";
     result = lettersOnly(s);
     EXPECT_EQUAL(result, "Planet");
 }
