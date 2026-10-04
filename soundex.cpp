@@ -115,13 +115,13 @@ string addZeros(string s){
 
     string result = s;
 
-    if(result.length() > 4){
+    if(result.length() < 4){
         while(result.length() != 4){
             result += '0';
         }
     }
 
-    else if(result.length() < 4){
+    else if(result.length() > 4){
         result = result.substr(0,4);
     }
 
@@ -149,7 +149,7 @@ string soundex(string s) {
 
     string add = addZeros(discard);
 
-    return discard;
+    return add;
 }
 
 
