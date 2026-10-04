@@ -139,7 +139,9 @@ string soundex(string s) {
 
     string letters = lettersOnly(s);
 
-    return lettersOnly(s);
+    string encode = encodeLetters(letters);
+
+    return letters;
 }
 
 
