@@ -209,11 +209,11 @@ STUDENT_TEST("test encodeLetters()"){
     EXPECT_EQUAL(encodeLetters("PWEW"), "1000");
 }
 
-STUDENT_TEST("test encodeLetters()"){
+STUDENT_TEST("test removeDuplicates()"){
     EXPECT_EQUAL(removeDuplicates("222025"), "2025");
 }
 
-STUDENT_TEST("test encodeLetters()"){
+STUDENT_TEST("test removeDuplicates()"){
     EXPECT_EQUAL(removeDuplicates("2220255"), "2025");
 }
 
