@@ -94,7 +94,7 @@ string removeDuplicates(string s){
         }
     }
 
-    return s;
+    return result;
 }
 
 /* TODO: Replace this comment with a descriptive function
