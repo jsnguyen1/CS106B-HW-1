@@ -145,7 +145,9 @@ string soundex(string s) {
 
     string discard = discardZeros(duplicates);
 
-    return discard;
+    string add = addZeros(discard);
+
+    return add;
 }
 
 
