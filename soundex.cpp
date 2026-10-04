@@ -25,6 +25,7 @@ using namespace std;
  * are incorrectly handled. Then, remove this comment and
  * replace it with a description of the bug you fixed.
  */
+
 string lettersOnly(string s) {
     string result = charToString(s[0]);
     for (int i = 1; i < s.length(); i++) {

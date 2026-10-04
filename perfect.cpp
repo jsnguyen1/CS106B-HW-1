@@ -192,7 +192,6 @@ STUDENT_TEST("Test findNthPerfectEuclid(n)"){
 
     EXPECT(isPerfect(findNthPerfectEuclid(3)));
 
-
 }
 
 /*

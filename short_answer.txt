@@ -62,16 +62,17 @@ A8. If the growth rate of the algorithim is N sqrt(N), then we take simplify thi
 last value of 15 million. This yields 2.2, which is close to doubling but not exact. To find the multiplier, plug in 2.2 to the N^3/2 to get a multiplier, which is 3.26. Then multiply 60.642 seconds by 3.26 to get 198 seconds.
 
 Q9. Explain how you chose your specific test cases and why they lead you to be confident `findNthPerfectEuclid` is working correctly.
-A9.
+A9. The first test case I chose is testing the raw output of findNthPerfectEuclid, first with the "base case" or the first perfect number, which is 6. Then I tested calling the function to find the third perfect to make sure the function could iterate and update the counters properly. As a third test, I wanted to ensure it could handle large calculations, namely getting the 5th perfect number which
+is greater than 33 million. Finally, I wanted to use the output of findNthPerfectEuclid as an input for the isPerfect function to independently test whether the output was a perfect number since we know that the isPerfect function works correctly.
 
 Soundex
 -------
 
 Q10. What is the Soundex code for "Angelou"? What is the code for your own surname?
-A10. TODO
+A10. Angelou: A524 | Justin: J235
 
 Q11. Before writing any code, brainstorm your plan of attack and sketch how you might decompose the work into smaller tasks. Briefly describe your decomposition strategy.
-A11. TODO
+A11. To decompose this, I would break the problem down based on the encoding steps given earlier in the instructions. First, we need to preprocess the string of a name. This means filtering dashes and other characters that arent alphabetic. Then we would create a for loop for iteration and add a series of if statements to build the new string, encoding each letter as a digit.
 
 Q12. Think about one or more examples of a class of names that the Soundex system might not work well for. Explain what this class of names is and why the system might incorrectly group them or mis-categorize one of the names.
 A12. TODO
