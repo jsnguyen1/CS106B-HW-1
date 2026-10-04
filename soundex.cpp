@@ -83,10 +83,10 @@ string removeDuplicates(string s){
 
     int i = 0;
 
-    while(i <= s.length() - 1){
+    while(i < result.length() - 1){
 
-        if(s[i] == s[i+1]){
-            result.erase(0,1);
+        if(result[i] == result[i+1]){
+            result.erase(i,1);
         }
 
         else{
