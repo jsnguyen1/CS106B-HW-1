@@ -36,35 +36,39 @@ string lettersOnly(string s) {
     return result;
 }
 
+string keepFirst(string s){
+    return string(1, s[0]);
+}
+
 string encodeLetters(string s) {
     string result = "";
 
     for (char &c : s) {
-        c = tolower(c);
+        c = toupper(c);
     }
 
     for (char ch : s) {
 
-        if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'h' || ch == 'w' || ch == 'y'){
+        if(ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U' || ch == 'H' || ch == 'W' || ch == 'Y'){
             result += "0";
         }
-        else if(ch == 'b' || ch == 'f' || ch == 'p' || ch == 'v'){
+        else if(ch == 'B' || ch == 'F' || ch == 'P' || ch == 'V'){
             result += "1";
         }
 
-        else if(ch == 'c' || ch == 'g' || ch == 'j' || ch == 'k' || ch == 'q' || ch == 's' || ch == 'x' || ch == 'z'){
+        else if(ch == 'C' || ch == 'G' || ch == 'J' || ch == 'K' || ch == 'Q' || ch == 'S' || ch == 'X' || ch == 'Z'){
             result += "2";
         }
 
-        else if(ch == 'd' || ch == 't'){
+        else if(ch == 'D' || ch == 'T'){
             result += "3";
         }
 
-        else if(ch == 'l'){
+        else if(ch == 'L'){
             result += "4";
         }
 
-        else if(ch == 'm' || ch == 'n'){
+        else if(ch == 'M' || ch == 'N'){
             result += '5';
         }
 
@@ -97,12 +101,53 @@ string removeDuplicates(string s){
     return result;
 }
 
+string discardZeros(string s){
+    string result = "";
+    for(char ch : s){
+        if (ch != '0'){
+            result += ch;
+        }
+    }
+    return result;
+}
+
+string addZeros(string s){
+
+    string result = s;
+
+    if(result.length() > 3){
+        while(result.length() != 3){
+            result += '0';
+        }
+    }
+
+    else if(result.length() < 3){
+        result = result.substr(0,3);
+    }
+
+    return result;
+}
+
+
+
 /* TODO: Replace this comment with a descriptive function
  * header comment.
  */
 string soundex(string s) {
     /* TODO: Fill in this function. */
-    return "";
+    string keepFirstLetter = keepFirst(s);
+
+    string filteredString = lettersOnly(s);
+
+    string encodedString = encodeLetters(filteredString);
+
+    string removeDuplicateString = removeDuplicates(encodedString);
+
+    string discardZeroString = discardZeros(removeDuplicateString);
+
+    string addZerosString = addZeros(discardZeroString);
+
+    return keepFirstLetter + addZerosString;
 }
 
 
