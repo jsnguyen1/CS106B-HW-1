@@ -73,13 +73,20 @@ void soundexSearch(string filepath) {
 PROVIDED_TEST("Test exclude of punctuation, digits, and spaces") {
     string s = "O'Hara";
     string result = lettersOnly(s);
+
     EXPECT_EQUAL(result, "OHara");
+
     s = "Planet9";
     result = lettersOnly(s);
     EXPECT_EQUAL(result, "Planet");
+
     s = "tl dr";
     result = lettersOnly(s);
     EXPECT_EQUAL(result, "tldr");
+
+    s = "5Planet";
+    result = lettersOnly(s);
+    EXPECT_EQUAL(result, "Planet");
 }
 
 
