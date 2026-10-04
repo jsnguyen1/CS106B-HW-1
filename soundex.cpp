@@ -141,7 +141,9 @@ string soundex(string s) {
 
     string encode = encodeLetters(letters);
 
-    return encode;
+    string duplicates = removeDuplicates(encode);
+
+    return duplicates;
 }
 
 
