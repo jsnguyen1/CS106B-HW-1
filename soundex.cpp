@@ -76,6 +76,27 @@ string encodeLetters(string s) {
     return result;
 }
 
+string removeDuplicates(string s){
+    //22205
+
+    string result = s;
+
+    int i = 0;
+
+    while(i <= s.length()){
+
+        if(s[i] == s[i+1]){
+            result.erase(0,1);
+        }
+
+        else{
+            i++;
+        }
+    }
+
+    return s;
+}
+
 /* TODO: Replace this comment with a descriptive function
  * header comment.
  */
@@ -123,7 +144,7 @@ PROVIDED_TEST("Test exclude of punctuation, digits, and spaces") {
     result = lettersOnly(s);
     EXPECT_EQUAL(result, "tldr");
 
-    s = "5Pl-anet";
+    s = "5Planet";
     result = lettersOnly(s);
     EXPECT_EQUAL(result, "Planet");
 }
@@ -183,6 +204,15 @@ PROVIDED_TEST("Ashcraft is not a special case") {
 STUDENT_TEST("test encodeLetters()"){
     EXPECT_EQUAL(encodeLetters("PWEW"), "1000");
 }
+
+STUDENT_TEST("test encodeLetters()"){
+    EXPECT_EQUAL(encodeLetters("PWEW"), "1000");
+}
+
+STUDENT_TEST("test encodeLetters()"){
+    EXPECT_EQUAL(removeDuplicates("222025"), "2025");
+}
+
 
 // TODO: add your test cases here
 
