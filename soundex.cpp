@@ -143,7 +143,9 @@ string soundex(string s) {
 
     string duplicates = removeDuplicates(encode);
 
-    return duplicates;
+    string discard = discardZeros(duplicates);
+
+    return discard;
 }
 
 
