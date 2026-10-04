@@ -72,7 +72,7 @@ string encodeLetters(string s) {
             result += '5';
         }
 
-        else{
+        else if(ch == 'R'){
             result += '6';
         }
     }
