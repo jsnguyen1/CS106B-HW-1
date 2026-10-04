@@ -143,7 +143,7 @@ string soundex(string s) {
 
     string duplicates = removeDuplicates(encode);
 
-    string total = keepFirstLetter + duplicates;
+    string total = keepFirstLetter + duplicates.substr(1,duplicates.length());
 
     string discard = discardZeros(total);
 
