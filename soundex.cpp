@@ -137,7 +137,9 @@ string soundex(string s) {
     /* TODO: Fill in this function. */
     string keepFirstLetter = keepFirst(s);
 
-    return keepFirstLetter;
+    string letters = lettersOnly(s);
+
+    return lettersOnly(s);
 }
 
 
