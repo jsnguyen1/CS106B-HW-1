@@ -137,17 +137,7 @@ string soundex(string s) {
     /* TODO: Fill in this function. */
     string keepFirstLetter = keepFirst(s);
 
-    string filteredString = lettersOnly(s);
-
-    string encodedString = encodeLetters(filteredString);
-
-    string removeDuplicateString = removeDuplicates(encodedString);
-
-    string discardZeroString = discardZeros(removeDuplicateString);
-
-    string addZerosString = addZeros(discardZeroString);
-
-    return keepFirstLetter + addZerosString;
+    return keepFirstLetter;
 }
 
 
