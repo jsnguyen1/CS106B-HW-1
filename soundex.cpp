@@ -149,7 +149,7 @@ string soundex(string s) {
 
     string add = addZeros(discard);
 
-    return add;
+    return encode;
 }
 
 
