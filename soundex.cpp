@@ -37,7 +37,7 @@ string lettersOnly(string s) {
 }
 
 string keepFirst(string s){
-    return string(1, s[0]);
+    return string(1, toupper(s[0]));
 }
 
 string encodeLetters(string s) {
