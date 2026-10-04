@@ -38,7 +38,13 @@ string lettersOnly(string s) {
 
 string encodeLetters(string s) {
     string result = "";
+
+    for (char &c : s) {
+        c = tolower(c);
+    }
+
     for (char ch : s) {
+
         if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'h' || ch == 'w' || ch == 'y'){
             result += "0";
         }
