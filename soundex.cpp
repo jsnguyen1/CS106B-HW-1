@@ -248,23 +248,36 @@ PROVIDED_TEST("Ashcraft is not a special case") {
     EXPECT_EQUAL(soundex("Ashcraft"), "A226");
 }
 
-STUDENT_TEST("test encodeLetters()"){
-    EXPECT_EQUAL(encodeLetters("PWEW"), "1000");
-}
-
-STUDENT_TEST("test encodeLetters()"){
-    EXPECT_EQUAL(encodeLetters("PWEW"), "1000");
-}
-
-STUDENT_TEST("test removeDuplicates()"){
-    EXPECT_EQUAL(removeDuplicates("222025"), "2025");
-}
-
-STUDENT_TEST("test removeDuplicates()"){
-    EXPECT_EQUAL(removeDuplicates("2220255"), "2025");
-}
-
 
 // TODO: add your test cases here
+STUDENT_TEST("lettersOnly removes all non-letter characters") {
+    EXPECT_EQUAL(lettersOnly("123-Mc'Donald!"), "McDonald");
+}
+
+STUDENT_TEST("keepFirst capitalizes the first letter") {
+    EXPECT_EQUAL(keepFirst("nguyen"), "N");
+}
+
+STUDENT_TEST("encodeLetters handles several different Soundex groups") {
+    EXPECT_EQUAL(encodeLetters("BCLMR"), "12456");
+}
+
+STUDENT_TEST("removeDuplicates collapses repeated adjacent digits") {
+    EXPECT_EQUAL(removeDuplicates("1112233005"), "12305");
+}
+
+STUDENT_TEST("discardZeros removes zeros but preserves other digits") {
+    EXPECT_EQUAL(discardZeros("102030405"), "12345");
+}
+
+STUDENT_TEST("addZeros pads a short code to length four") {
+    EXPECT_EQUAL(addZeros("S2"), "S200");
+}
+
+STUDENT_TEST("addZeros truncates a long code to length four") {
+    EXPECT_EQUAL(addZeros("S23456"), "S234");
+}
+
+
 
 
