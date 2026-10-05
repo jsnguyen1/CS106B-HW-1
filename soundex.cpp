@@ -179,6 +179,7 @@ void soundexSearch(string filepath) {
 
     while(specificName != ""){
 
+        allNames.clear();
 
         string specificSoundex = soundex(specificName);
 
