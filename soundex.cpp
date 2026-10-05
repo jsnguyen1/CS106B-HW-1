@@ -180,9 +180,9 @@ void soundexSearch(string filepath) {
 
     while(userChoice == "Y"){
 
-        string specificName = getLine("Enter a surname");
+        string specificName = getLine("Enter a surname (RETURN to quit):");
 
-        cout << "The Soundex code of " << specificName << " is " << soundex(specificName) << endl;
+        cout << "Soundex code is " << soundex(specificName) << endl;
 
         for(int i = 0; i < allNames.size(); i++){
 
@@ -195,7 +195,7 @@ void soundexSearch(string filepath) {
 
         matchingSoundex.sort();
 
-        cout << matchingSoundex << endl;
+        cout << "Matches from database: " << matchingSoundex << endl;
 
         userChoice = getLine("Would you like to enter another surname? Enter Y for Yes or N for No");
 
