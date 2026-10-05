@@ -196,9 +196,9 @@ void soundexSearch(string filepath) {
 
         cout << "Matches from database: " << matchingSoundex << endl;
 
-        specificName = getLine("Enter a surname (RETURN to quit):");
+        matchingSoundex.clear();
 
-        allNames.clear();
+        specificName = getLine("Enter a surname (RETURN to quit):");
 
     }
 
