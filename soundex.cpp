@@ -162,6 +162,9 @@ void soundexSearch(string filepath) {
     ifstream in;
     Vector<string> allNames;
 
+    Vector<string> matchingSoundex;
+
+
     if (openFile(in, filepath)) {
         allNames = readLines(in);
     }
@@ -171,6 +174,35 @@ void soundexSearch(string filepath) {
     // The names read from file are now stored in Vector allNames
 
     /* TODO: Fill in the remainder of this function. */
+
+
+    string userChoice = "Y";
+
+    while(userChoice == "Y"){
+
+        string specificName = getLine("Enter a surname");
+
+        cout << "The Soundex code of " << specificName << " is " << soundex(specificName) << endl;
+
+        for(int i = 0; i < allNames.size(); i++){
+
+            string currentSound = soundex(allNames[i]);
+
+            if(currentSound == specificName){
+                matchingSoundex.add("Soundex of " + allNames[i] + ": " + soundex(allNames[i]));
+            }
+        }
+
+        matchingSoundex.sort();
+
+        cout << matchingSoundex << endl;
+
+        userChoice = getLine("Would you like to enter another surname? Enter Y for Yes or N for No");
+
+    }
+
+    cout << "All done!";
+
 }
 
 
