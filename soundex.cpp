@@ -193,7 +193,7 @@ void soundexSearch(string filepath) {
             }
         } */
 
-        cout << soundex(allNames[0]);
+        cout << soundex(allNames[2]) << endl;
 
         matchingSoundex.sort();
 
