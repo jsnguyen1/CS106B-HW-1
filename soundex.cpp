@@ -278,6 +278,30 @@ STUDENT_TEST("addZeros truncates a long code to length four") {
     EXPECT_EQUAL(addZeros("S23456"), "S234");
 }
 
+STUDENT_TEST("soundex is case insensitive") {
+    EXPECT_EQUAL(soundex("nGuYeN"), "N250");
+}
+
+STUDENT_TEST("soundex ignores punctuation and digits") {
+    EXPECT_EQUAL(soundex("Ng-uy3en!"), "N250");
+}
+
+STUDENT_TEST("soundex ignores spaces") {
+    EXPECT_EQUAL(soundex("Su hur rith"), "S630");
+}
+
+STUDENT_TEST("soundex pads short codes") {
+    EXPECT_EQUAL(soundex("Ng"), "N200");
+}
+
+STUDENT_TEST("soundex handles repeated encoded digits") {
+    EXPECT_EQUAL(soundex("Nguyen"), "N250");
+}
+
+STUDENT_TEST("soundex handles a normal mixed-code name") {
+    EXPECT_EQUAL(soundex("Justin"), "J235");
+}
+
 
 
 
