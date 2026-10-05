@@ -72,12 +72,16 @@ Q10. What is the Soundex code for "Angelou"? What is the code for your own surna
 A10. Angelou: A524 | Justin: J235
 
 Q11. Before writing any code, brainstorm your plan of attack and sketch how you might decompose the work into smaller tasks. Briefly describe your decomposition strategy.
-A11. To decompose this, I would break the problem down based on the encoding steps given earlier in the instructions. First, we need to preprocess the string of a name. This means filtering dashes and other characters that arent alphabetic. Then we would create a for loop for iteration and add a series of if statements to build the new string, encoding each letter as a digit.
+A11. To break this down, I would follow the encoding steps by creating multiple helper functions, each representing a step. First, we need to preprocess the input string by removing every character that isn’t alphabetical, including spaces. Next, I’d convert the new string to uppercase, and then create a function that encodes each letter to its corresponding digit using a series of if/else if statements.
+After that, we’d create a function to remove any adjacent duplicate digits in the Soundex code, followed by a function that would discard any remaining zeroes. Finally, I’d create a function that adds or removes zeroes to ensure the result has four characters. By making each step its own helper, this becomes much easier to test, as we can see how an example input string gets altered as it passes through the helper functions.
+
 
 Q12. Think about one or more examples of a class of names that the Soundex system might not work well for. Explain what this class of names is and why the system might incorrectly group them or mis-categorize one of the names.
-A12. TODO
+A12. I think that the Soundex system will struggle on names that don't have the same pronounciation rules as english, such as names originating from other countries. One such example is Justin's last name, Nguyen. Since Soundex is based on English, it may not represent this pronounciation properly. This last name is pronounced "win", but that isn't something a person can naturally sound out given the raw surname.
+As a result, names that sound similar could receive different soundex codes (like Nguyen vs Win) or names that sound different could even be grouped together.
 
 Q13. Suppose you are a software engineer working for the U.S. government. You have been tasked with implementing a system that collects names as part of the Census survey and analyzes these names using a phonetic algorithm. Your boss suggests using Soundex and notes that the algorithm is only expected to work for ASCII-encoded strings, since supporting Unicode would require extra work and time. What would your response be and why? What representational harms might result from building a system that exclusively uses Soundex and/or ASCII?
-A13. TODO
+A13. Our response would be that the Soundex and ASCII-encoded string combination would completely miss out on an accurate representation of the US. The United States of America is known as the "melting pot" of the world. People from all across the globe have settled here, many with names that aren't pronounced like the english alphabet. If we were to only use Soundex and ASCII-encoded strings, our accuracy of encodings for people with unique names would be extremely off.
+As a result, a signicant portion of the population would have an encoding that is completely incorrect, since the Soundex-ASCII system would treat the names as english pronounciations. This isn't just one or two people, it's a substatial chunk of the population that would be incorrectly represented. For this reason. it literally doesn't matter if it requires extra work. The U.S. Government is built on representation, so even creating an algorithim like this wouldn't support this at all.
 
 

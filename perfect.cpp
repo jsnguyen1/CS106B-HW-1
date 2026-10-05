@@ -4,9 +4,10 @@
  * Remove starter comments and add your own
  * comments on each function and on complex code sections.
  */
+#include "SimpleTest.h"
 #include "console.h"
+#include <cmath>
 #include <iostream>
-#include "SimpleTest.h" // IWYU pragma: keep (needed to quiet spurious warning)
 using namespace std;
 
 /* The divisorSum function takes one argument `n` and calculates the
@@ -33,9 +34,7 @@ long divisorSum(long n) {
  * A perfect number is a non-zero positive number whose sum
  * of its proper divisors is equal to itself.
  */
-bool isPerfect(long n) {
-    return (n != 0) && (n == divisorSum(n));
-}
+bool isPerfect(long n) { return (n != 0) && (n == divisorSum(n)); }
 
 /* The findPerfects function takes one argument `stop` and performs
  * an exhaustive search for perfect numbers over the range 1 to `stop`.
@@ -46,70 +45,124 @@ void findPerfects(long stop) {
         if (isPerfect(num)) {
             cout << "Found perfect number: " << num << endl;
         }
-        if (num % 10000 == 0) cout << "." << flush; // progress bar
+        if (num % 10000 == 0)
+            cout << "." << flush; // progress bar
     }
     cout << endl << "Done searching up to " << stop << endl;
 }
 
-/* TODO: Replace this comment with a descriptive function
- * header comment.
- */
+/*
+Function description: Calculates the sum of the proper divisors of n by checking
+only divisors up to the square root of n and adding each matching divisor pair.
+
+Parameters:
+- long n: The number whose proper divisors are summed.
+
+Returns:
+- long: The sum of all proper divisors of n.
+
+Preconditions/assumptions:
+- n is expected to be nonnegative for normal use.
+
+Errors/special cases:
+- If n is a perfect square, its square root is added only once.
+- If n is 1, there are no proper divisors and returns 0.
+*/
 long smarterSum(long n) {
     long total = 0;
+
+    if (n == 1) {
+        return total;
+    }
+
     for (long divisor = 1; divisor <= sqrt(n); divisor++) {
         if (n % divisor == 0) {
             total += divisor;
-            if (divisor != 1 && divisor != sqrt(n)){
-                total += n/divisor;
+
+            // Add the paired divisor, avoiding n itself and double-counting a square
+            // root.
+
+            if (divisor != 1 && divisor != sqrt(n)) {
+                total += n / divisor;
             }
         }
     }
     return total;
 }
 
+/*
+Function description: Determines whether a number is perfect using smarterSum.
 
-/* TODO: Replace this comment with a descriptive function
- * header comment.
- */
-bool isPerfectSmarter(long n) {
-    return (n != 0) && (n == smarterSum(n));
-}
+Parameters:
+- long n: The number to test.
 
+Returns:
+- bool: true if n is a perfect number and false otherwise.
+
+Errors/special cases:
+- 0 is not considered a perfect number.
+*/
+bool isPerfectSmarter(long n) { return (n != 0) && (n == smarterSum(n)); }
+
+/*
+Function description: Searches for all perfect numbers below stop using
+isPerfectSmarter and prints each perfect number found.
+
+Parameters:
+- long stop: The upper bound of the range to search.
+
+Returns:
+- void: This function does not return a value.
+*/
 void findPerfectsSmarter(long stop) {
     for (long num = 1; num < stop; num++) {
         if (isPerfectSmarter(num)) {
             cout << "Found smarter perfect number: " << num << endl;
         }
-        if (num % 10000 == 0) cout << "." << flush; // progress bar
+        if (num % 10000 == 0)
+            cout << "." << flush; // progress bar
     }
     cout << endl << "Done searching up to " << stop << endl;
 }
 
-/* TODO: Replace this comment with a descriptive function
- * header comment.
- */
+/*
+Function description: Finds the nth perfect number using the Euclid formula
+and Mersenne numbers of the form 2^k - 1.
+
+Parameters:
+- long n: The position of the perfect number to find.
+
+Returns:
+- long: The nth perfect number.
+
+Preconditions/assumptions:
+- n is a positive integer.
+*/
 long findNthPerfectEuclid(long n) {
 
     int count = 0;
     int k = 1;
 
-    while(count <= n){
-        int m = (pow(2,k)) - 1; //calculate mersenne number
+    while (count <= n) {
 
-        if(divisorSum(m) == 1){ // if mersenne number is prime, increment the count of perfect numbers.
+        // Compute the Mersenne number 2^k - 1
+
+        int m = (pow(2, k)) - 1;
+
+        // A number with divisor sum 1 is prime.
+
+        if (divisorSum(m) == 1) {
             count++;
-            if (count == n){ // if the count eventually equals the nth perfect number, return the value
+            if (count == n) {
                 break;
             }
-            k++;
         }
-        else{ // if the mersenne number isnt prime, increment k to move on to the next power.
-            k++;
-        }
-    }
-    return (pow(2,k-1)) * (pow(2,k) - 1);
-}
 
+        k++;
+    }
+    // Use Euclid's formula to construct the perfect number from k.
+    return (pow(2, k - 1)) * (pow(2, k) - 1);
+}
 
 /* * * * * * Test Cases * * * * * */
 
@@ -139,73 +192,62 @@ PROVIDED_TEST("Test oddballs: 0 and 1 are not perfect") {
     EXPECT(!isPerfect(1));
 }
 
-PROVIDED_TEST("Confirm 33550336 is perfect") {
-    EXPECT(isPerfect(33550336));
-}
+PROVIDED_TEST("Confirm 33550336 is perfect") { EXPECT(isPerfect(33550336)); }
 
 PROVIDED_TEST("Time trial of findPerfects on input size 1000") {
     TIME_OPERATION(1000, findPerfects(1000));
 }
 
-
-
-
-// TODO: add your student test cases here
-
-
-/*STUDENT_TEST("Create time trials") {
+STUDENT_TEST("Create time trials") {
 
     TIME_OPERATION(62500, findPerfects(62500));
     TIME_OPERATION(125000, findPerfects(125000));
     TIME_OPERATION(250000, findPerfects(250000));
     TIME_OPERATION(500000, findPerfects(500000));
+}
 
-}*/
-
-/*STUDENT_TEST("testing isPerfect(n) on negative numbers"){
+STUDENT_TEST("testing isPerfect(n) on negative numbers") {
     EXPECT(!isPerfect(-1));
     EXPECT(!isPerfect(-100));
     EXPECT(!isPerfect(-10000));
-}*/
+}
 
-/*STUDENT_TEST("testing smarterSum(n)"){
+STUDENT_TEST("smarterSum matches divisorSum for a normal number") {
     EXPECT_EQUAL(smarterSum(6), divisorSum(6));
-    EXPECT_EQUAL(smarterSum(-1), divisorSum(-1));
-    EXPECT_EQUAL(smarterSum(25), divisorSum(25));
-    EXPECT_EQUAL(smarterSum(0), divisorSum(0));
-}*/
+}
 
-/*STUDENT_TEST("Multiple time trials of findPerfectsSmarter on increasing input sizes") {
+STUDENT_TEST("smarterSum handles a perfect square") {
+    EXPECT_EQUAL(smarterSum(25), divisorSum(25));
+}
+
+STUDENT_TEST("smarterSum handles zero") {
+    EXPECT_EQUAL(smarterSum(0), divisorSum(0));
+}
+
+STUDENT_TEST("smarterSum handles one") {
+    EXPECT_EQUAL(smarterSum(1), divisorSum(1));
+}
+
+STUDENT_TEST(
+    "Multiple time trials of findPerfectsSmarter on increasing input sizes") {
     TIME_OPERATION(1875000, findPerfectsSmarter(1875000));
     TIME_OPERATION(3750000, findPerfectsSmarter(3750000));
     TIME_OPERATION(7500000, findPerfectsSmarter(7500000));
     TIME_OPERATION(15000000, findPerfectsSmarter(15000000));
-}*/
+}
 
-STUDENT_TEST("Test findNthPerfectEuclid(n)"){
-
+STUDENT_TEST("findNthPerfectEuclid finds the first perfect number") {
     EXPECT_EQUAL(findNthPerfectEuclid(1), 6);
+}
 
+STUDENT_TEST("findNthPerfectEuclid finds the third perfect number") {
     EXPECT_EQUAL(findNthPerfectEuclid(3), 496);
+}
 
+STUDENT_TEST("findNthPerfectEuclid finds the fifth perfect number") {
     EXPECT_EQUAL(findNthPerfectEuclid(5), 33550336);
+}
 
+STUDENT_TEST("findNthPerfectEuclid returns a perfect number") {
     EXPECT(isPerfect(findNthPerfectEuclid(3)));
-
 }
-
-/*
- * Below is a suggestion of how to use a loop to set the input sizes
- * for a sequence of time trials.
- *
- *
-STUDENT_TEST("Multiple time trials of findPerfects on increasing input sizes") {
-
-    int smallest = 1000, largest = 8000;
-
-    for (int size = smallest; size <= largest; size *= 2) {
-        TIME_OPERATION(size, findPerfects(size));
-    }
-}
-
-*/

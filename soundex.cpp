@@ -4,28 +4,29 @@
  * Remove starter comments and add your own
  * comments on each function and on complex code sections.
  */
+#include "SimpleTest.h"
+#include "console.h"
+#include "filelib.h"
+#include "simpio.h"
+#include "strlib.h"
+#include "vector.h"
 #include <cctype>
 #include <fstream>
 #include <string>
-#include "console.h"
-#include "strlib.h"
-#include "filelib.h"
-#include "simpio.h"
-#include "vector.h"
-#include "SimpleTest.h" // IWYU pragma: keep (needed to quiet spurious warning)
 using namespace std;
 
-/* This function is intended to return a string which
- * includes only the letter characters from the original
- * (all non-letter characters are excluded)
- *
- * WARNING: The provided code is buggy!
- *
- * Use test cases to identify which inputs to this function
- * are incorrectly handled. Then, remove this comment and
- * replace it with a description of the bug you fixed.
- */
+/*
+Function description: Removes all non-letter characters from the given string.
 
+Parameters:
+- string s: The original input string, which may contain letters and non-letter characters.
+
+Returns:
+- string: A new string that contains only the letters from string s in their original order.
+
+Errors/special cases:
+- If s contains no letters, the function returns an empty string.
+*/
 string lettersOnly(string s) {
     string result = "";
     for (int i = 0; i < s.length(); i++) {
@@ -36,10 +37,34 @@ string lettersOnly(string s) {
     return result;
 }
 
-string keepFirst(string s){
+/*
+Function description: Returns the first character of the given string as an uppercase letter.
+
+Parameters:
+- string s: A string containing only alphabetical characters.
+
+Returns:
+- string: The first character of s converted to uppercase.
+
+Preconditions/assumptions:
+- s contains at least one character.
+*/
+string keepFirst(string s) {
     return string(1, toupper(s[0]));
 }
 
+/*
+Function description: Converts each alphabetical character in the input string into its matching Soundex digit.
+
+Parameters:
+- string s: A string containing only alphabetical characters.
+
+Returns:
+- string: A string containing the matching Soundex digit for each character in s.
+
+Preconditions/assumptions:
+- s contains only alphabetical characters.
+*/
 string encodeLetters(string s) {
     string result = "";
 
@@ -49,30 +74,21 @@ string encodeLetters(string s) {
 
     for (char ch : s) {
 
-        if(ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U' || ch == 'H' || ch == 'W' || ch == 'Y'){
+        if (ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U' ||
+            ch == 'H' || ch == 'W' || ch == 'Y') {
             result += "0";
-        }
-        else if(ch == 'B' || ch == 'F' || ch == 'P' || ch == 'V'){
+        } else if (ch == 'B' || ch == 'F' || ch == 'P' || ch == 'V') {
             result += "1";
-        }
-
-        else if(ch == 'C' || ch == 'G' || ch == 'J' || ch == 'K' || ch == 'Q' || ch == 'S' || ch == 'X' || ch == 'Z'){
+        } else if (ch == 'C' || ch == 'G' || ch == 'J' || ch == 'K' || ch == 'Q' ||
+                 ch == 'S' || ch == 'X' || ch == 'Z') {
             result += "2";
-        }
-
-        else if(ch == 'D' || ch == 'T'){
+        } else if (ch == 'D' || ch == 'T') {
             result += "3";
-        }
-
-        else if(ch == 'L'){
+        } else if (ch == 'L') {
             result += "4";
-        }
-
-        else if(ch == 'M' || ch == 'N'){
+        } else if (ch == 'M' || ch == 'N') {
             result += '5';
-        }
-
-        else if(ch == 'R'){
+        } else if (ch == 'R') {
             result += '6';
         }
     }
@@ -80,20 +96,29 @@ string encodeLetters(string s) {
     return result;
 }
 
-string removeDuplicates(string s){
-    //22205
+/*
+Function description: Removes consecutive duplicate digits from a Soundex code.
+
+Parameters:
+- string s: A string that contains Soundex digits.
+
+Returns:
+- string: A new string where each adjacent group of the same digits are reduced to one digit.
+*/
+
+string removeDuplicates(string s) {
 
     string result = s;
 
     int i = 0;
 
-    while(i < result.length() - 1){
+    while (i < result.length() - 1) {
 
-        if(result[i] == result[i+1]){
-            result.erase(i,1);
+        if (result[i] == result[i + 1]) {
+            result.erase(i, 1);
         }
 
-        else{
+        else {
             i++;
         }
     }
@@ -101,93 +126,132 @@ string removeDuplicates(string s){
     return result;
 }
 
-string discardZeros(string s){
+/*
+Function description: Removes all zero characters from a Soundex code.
+
+Parameters:
+- string s: A string that contains Soundex digits.
+
+Returns:
+- string: A new string containing all nonzero characters from s in their original order.
+
+Errors/special cases:
+- If s contains only zeros, the function returns an empty string.
+*/
+
+string discardZeros(string s) {
     string result = "";
-    for(char ch : s){
-        if (ch != '0'){
+    for (char ch : s) {
+        if (ch != '0') {
             result += ch;
         }
     }
     return result;
 }
 
-string addZeros(string s){
+/*
+Function description: Adjusts a Soundex code to exactly four characters by
+padding shorter codes with zeros and truncating longer codes.
+
+Parameters:
+- string s: The Soundex code to adjust.
+
+Returns:
+- string: A four-character Soundex code.
+*/
+
+string addZeros(string s) {
 
     string result = s;
 
-    if(result.length() < 4){
-        while(result.length() != 4){
+    if (result.length() < 4) {
+        while (result.length() != 4) {
             result += '0';
         }
     }
 
-    else if(result.length() > 4){
-        result = result.substr(0,4);
+    else if (result.length() > 4) {
+        result = result.substr(0, 4);
     }
 
     return result;
 }
 
+/*
+Function description: Computes the Soundex code for a given surname.
 
+Parameters:
+- string s: The surname to convert into a Soundex code.
 
-/* TODO: Replace this comment with a descriptive function
- * header comment.
- */
+Returns:
+- string: The Soundex code corresponding to s.
+
+Preconditions/assumptions:
+- s contains at least one alphabetical character.
+*/
+
 string soundex(string s) {
-    /* TODO: Fill in this function. */
-    string keepFirstLetter = keepFirst(s);
 
     string letters = lettersOnly(s);
 
-    string encode = encodeLetters(letters);
+    string firstLetter = keepFirst(letters);
 
-    string duplicates = removeDuplicates(encode);
+    string encoded = encodeLetters(letters);
 
-    string total = keepFirstLetter + duplicates.substr(1,duplicates.length());
+    string withoutDuplicates = removeDuplicates(encoded);
 
-    string discard = discardZeros(total);
+    // Replace the first encoded digit with the original first letter.
 
-    string add = addZeros(discard);
+    string withFirstLetter = firstLetter + withoutDuplicates.substr(1, withoutDuplicates.length());
 
-    return add;
+    string withoutZeros = discardZeros(withFirstLetter);
+
+    string finalCode = addZeros(withoutZeros);
+
+    return finalCode;
 }
 
+/*
+Function description: Repeatedly searches a surname database for names that have the same Soundex code as a surname entered by the user.
 
-/* TODO: Replace this comment with a descriptive function
- * header comment.
- */
+Parameters:
+- string filepath: The path to the file with the surname database.
+
+Returns:
+- void: This function does not return a value.
+
+Errors/special cases:
+- The search ends when the user presses Return without entering a surname.
+- Matching surnames are printed in sorted order.
+*/
+
 void soundexSearch(string filepath) {
-    // This provided code opens the specified file
-    // and reads the lines into a vector of strings
+
     ifstream in;
     Vector<string> allNames;
 
     Vector<string> matchingSoundex;
 
-
     if (openFile(in, filepath)) {
         allNames = readLines(in);
     }
-    cout << "Read file " << filepath << ", "
-         << allNames.size() << " names found." << endl;
+    cout << "Read file " << filepath << ", " << allNames.size() << " names found."
+         << endl;
 
-    // The names read from file are now stored in Vector allNames
+    string specificName = getLine("Enter a surname (RETURN to quit): ");
 
-    /* TODO: Fill in the remainder of this function. */
-
-    string specificName = getLine("Enter a surname (RETURN to quit):");
-
-    while(specificName != ""){
+    while (specificName != "") {
 
         string specificSoundex = soundex(specificName);
 
         cout << "Soundex code is " << specificSoundex << endl;
 
-        for(int i = 0; i < allNames.size(); i++){
+        // Collect all surnames whose Soundex code matches the user's surname.
+        for (int i = 0; i < allNames.size(); i++) {
 
             string currentSoundex = soundex(allNames[i]);
 
-            if(specificSoundex == currentSoundex){
+            if (specificSoundex == currentSoundex) {
                 matchingSoundex.add(allNames[i]);
             }
         }
@@ -200,17 +264,13 @@ void soundexSearch(string filepath) {
 
         cout << endl;
 
-        specificName = getLine("Enter a surname (RETURN to quit):");
-
+        specificName = getLine("Enter a surname (RETURN to quit): ");
     }
 
-    cout << "All done!";
-
+    cout << "All done! " << endl;
 }
 
-
 /* * * * * * Test Cases * * * * * */
-
 
 PROVIDED_TEST("Test exclude of punctuation, digits, and spaces") {
     string s = "O'Hara";
@@ -230,7 +290,6 @@ PROVIDED_TEST("Test exclude of punctuation, digits, and spaces") {
     result = lettersOnly(s);
     EXPECT_EQUAL(result, "Planet");
 }
-
 
 PROVIDED_TEST("Sample inputs from handout") {
     EXPECT_EQUAL(soundex("Curie"), "C600");
@@ -278,13 +337,11 @@ PROVIDED_TEST("Wharton begins with Wh") {
 }
 
 PROVIDED_TEST("Ashcraft is not a special case") {
-    // Some versions of Soundex make special case for consecutive codes split by hw
-    // We do not make this special case, just treat same as codes split by vowel
     EXPECT_EQUAL(soundex("Ashcraft"), "A226");
 }
 
+//Student Test Cases
 
-// TODO: add your test cases here
 STUDENT_TEST("lettersOnly removes all non-letter characters") {
     EXPECT_EQUAL(lettersOnly("123-Mc'Donald!"), "McDonald");
 }
@@ -336,7 +393,3 @@ STUDENT_TEST("soundex handles repeated encoded digits") {
 STUDENT_TEST("soundex handles a normal mixed-code name") {
     EXPECT_EQUAL(soundex("Justin"), "J235");
 }
-
-
-
-
