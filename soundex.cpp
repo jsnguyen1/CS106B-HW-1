@@ -198,6 +198,8 @@ void soundexSearch(string filepath) {
 
         matchingSoundex.clear();
 
+        cout << endl;
+
         specificName = getLine("Enter a surname (RETURN to quit):");
 
     }
