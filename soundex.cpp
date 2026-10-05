@@ -184,14 +184,16 @@ void soundexSearch(string filepath) {
 
         cout << "Soundex code is " << soundex(specificName) << endl;
 
-        for(int i = 0; i < allNames.size(); i++){
+        /*for(int i = 0; i < allNames.size(); i++){
 
             string currentSound = soundex(allNames[i]);
 
             if(currentSound == specificName){
                 matchingSoundex.add("Soundex of " + allNames[i] + ": " + soundex(allNames[i]));
             }
-        }
+        } */
+
+        cout << soundex(allNames[0]);
 
         matchingSoundex.sort();
 
