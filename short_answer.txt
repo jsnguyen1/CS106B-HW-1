@@ -1,11 +1,6 @@
-Before submitting this file, make sure that there are no more TODO
-placeholders remaining in the file (and remove this comment too).
 
 Perfect Numbers
 ---------------
-
-Before submitting this file, make sure that there are no more TODO
-placeholders remaining in the file (and remove this comment too).
 
 Q1. Roughly how long did it take your computer to do the search? How many perfect numbers were found and what were they?
 A1. By looking at a clock it took roughly 00.23 seconds to do the search. There were four perfect numbers it found which included 6, 28, 496, and 8128.
