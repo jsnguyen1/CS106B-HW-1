@@ -57,14 +57,12 @@ void findPerfects(long stop) {
         if (isPerfect(num)) {
             cout << "Found perfect number: " << num << endl;
         }
-        if (num % 10000 == 0){
+        if (num % 10000 == 0) {
             cout << "." << flush; // progress bar
         }
-
     }
     cout << endl << "Done searching up to " << stop << endl;
 }
-
 
 /*
  * Calculates the sum of the proper divisors of n by checking only divisors up
@@ -99,16 +97,14 @@ long smarterSum(long n) {
     return total;
 }
 
-
 /*
  * Determines whether a number is perfect using smarterSum. The parameter n is
  * a long representing the number to test, and the function returns a bool that
  * is true if n is a perfect number and false otherwise. The function assumes n
- * is nonnegative for normal use. As a special case, 0 is not considered a
+ * is nonnegative. As a special case, 0 is not considered a
  * perfect number.
  */
 bool isPerfectSmarter(long n) { return (n != 0) && (n == smarterSum(n)); }
-
 
 /*
  * Searches for all perfect numbers below stop using isPerfectSmarter and
@@ -122,14 +118,12 @@ void findPerfectsSmarter(long stop) {
         if (isPerfectSmarter(num)) {
             cout << "Found smarter perfect number: " << num << endl;
         }
-        if (num % 10000 == 0){
+        if (num % 10000 == 0) {
             cout << "." << flush; // progress bar
         }
-
     }
     cout << endl << "Done searching up to " << stop << endl;
 }
-
 
 /*
  * Finds the nth perfect number using the Euclid formula and Mersenne numbers of
@@ -139,26 +133,22 @@ void findPerfectsSmarter(long stop) {
  * does not handle values of n that are 0 or negative.
  */
 long findNthPerfectEuclid(long n) {
-
     long count = 0;
     long k = 1;
 
     while (count < n) {
-
-
         long m = (pow(2, k)) - 1;
 
         // A number with divisor sum 1 is prime.
-
         if (divisorSum(m) == 1) {
             count++;
         }
 
-        if (count < n){
-             k++;
+        if (count < n) {
+            k++;
         }
-
     }
+
     // Use Euclid's formula to construct the perfect number from k.
     return (pow(2, k - 1)) * (pow(2, k) - 1);
 }
