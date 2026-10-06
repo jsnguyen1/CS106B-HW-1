@@ -16,6 +16,7 @@
  * search much larger ranges in much less time.
  *
  */
+
 #include "SimpleTest.h"
 #include "console.h"
 #include <cmath>
@@ -215,13 +216,13 @@ STUDENT_TEST("smarterSum handles one") {
     EXPECT_EQUAL(smarterSum(1), divisorSum(1));
 }
 
-/*STUDENT_TEST(
+STUDENT_TEST(
     "Multiple time trials of findPerfectsSmarter on increasing input sizes") {
     TIME_OPERATION(1875000, findPerfectsSmarter(1875000));
     TIME_OPERATION(3750000, findPerfectsSmarter(3750000));
     TIME_OPERATION(7500000, findPerfectsSmarter(7500000));
     TIME_OPERATION(15000000, findPerfectsSmarter(15000000));
-}*/
+}
 
 STUDENT_TEST("findNthPerfectEuclid finds the first perfect number") {
     EXPECT_EQUAL(findNthPerfectEuclid(1), 6);

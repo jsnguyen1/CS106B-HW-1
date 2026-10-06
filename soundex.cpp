@@ -12,6 +12,7 @@ Stanford surname database. The file also includes a console program for
 searching names and student tests to ensure functionality of the individual
 helpers and overall algorithm.
  */
+
 #include "SimpleTest.h"
 #include "console.h"
 #include "filelib.h"
@@ -57,9 +58,7 @@ string keepFirst(string s) { return string(1, toupper(s[0])); }
 string encodeLetters(string s) {
     string result = "";
 
-    for (char &c : s) {
-        c = toupper(c);
-    }
+    s = toUpperCase(s);
 
     for (char ch : s) {
 
