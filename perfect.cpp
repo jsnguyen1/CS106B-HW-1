@@ -1,8 +1,20 @@
 /*
- * TODO: remove and replace this file header comment
- * This is a .cpp file you will edit and turn in.
- * Remove starter comments and add your own
- * comments on each function and on complex code sections.
+ * perfect.cpp
+ * Names: Justin Nguyen, Suhurrith Adhikari
+ * Course: CS 106B
+ *
+ * Description: This file explores multiple approaches for finding perfect
+ * numbers. It begins with a brute-force method that checks every possible
+ * divisor, then uses more efficient techniques to reduce the amount of
+ * computation. The final approach uses Euclid's method and Mersenne primes to
+ * generate perfect numbers much more efficiently.
+ *
+ * Something interesting: Small changes to an algorithm can have a huge effect
+ * on the run time. The original approach checked every possible divisor, which
+ * becomes very slow as the input grows. By avoiding unnecessary checks and
+ * using mathematical properties of perfect numbers (Euclid), we were able to
+ * search much larger ranges in much less time.
+ *
  */
 #include "SimpleTest.h"
 #include "console.h"
@@ -45,44 +57,41 @@ void findPerfects(long stop) {
         if (isPerfect(num)) {
             cout << "Found perfect number: " << num << endl;
         }
-        if (num % 10000 == 0)
+        if (num % 10000 == 0){
             cout << "." << flush; // progress bar
+        }
+
     }
     cout << endl << "Done searching up to " << stop << endl;
 }
 
+
 /*
-Function description: Calculates the sum of the proper divisors of n by checking
-only divisors up to the square root of n and adding each matching divisor pair.
-
-Parameters:
-- long n: The number whose proper divisors are summed.
-
-Returns:
-- long: The sum of all proper divisors of n.
-
-Preconditions/assumptions:
-- n is expected to be nonnegative for normal use.
-
-Errors/special cases:
-- If n is a perfect square, its square root is added only once.
-- If n is 1, there are no proper divisors and returns 0.
-*/
+ * Calculates the sum of the proper divisors of n by checking only divisors up
+ * to the square root of n and adding each matching divisor pair. The parameter
+ * n is a long representing the number whose proper divisors are summed, and
+ * the function returns a long representing the sum of all proper divisors of
+ * n. The function assumes n is nonnegative. If n is a perfect
+ * square, its square root is added only once, and if n is 1, there are no
+ * proper divisors and the function returns 0.
+ */
 long smarterSum(long n) {
     long total = 0;
+
+    long root = sqrt(n);
 
     if (n == 1) {
         return total;
     }
 
-    for (long divisor = 1; divisor <= sqrt(n); divisor++) {
+    for (long divisor = 1; divisor <= root; divisor++) {
         if (n % divisor == 0) {
             total += divisor;
 
             // Add the paired divisor, avoiding n itself and double-counting a square
             // root.
 
-            if (divisor != 1 && divisor != sqrt(n)) {
+            if (divisor != 1 && divisor != root) {
                 total += n / divisor;
             }
         }
@@ -90,75 +99,65 @@ long smarterSum(long n) {
     return total;
 }
 
+
 /*
-Function description: Determines whether a number is perfect using smarterSum.
-
-Parameters:
-- long n: The number to test.
-
-Returns:
-- bool: true if n is a perfect number and false otherwise.
-
-Errors/special cases:
-- 0 is not considered a perfect number.
-*/
+ * Determines whether a number is perfect using smarterSum. The parameter n is
+ * a long representing the number to test, and the function returns a bool that
+ * is true if n is a perfect number and false otherwise. The function assumes n
+ * is nonnegative for normal use. As a special case, 0 is not considered a
+ * perfect number.
+ */
 bool isPerfectSmarter(long n) { return (n != 0) && (n == smarterSum(n)); }
 
+
 /*
-Function description: Searches for all perfect numbers below stop using
-isPerfectSmarter and prints each perfect number found.
-
-Parameters:
-- long stop: The upper bound of the range to search.
-
-Returns:
-- void: This function does not return a value.
-*/
+ * Searches for all perfect numbers below stop using isPerfectSmarter and
+ * prints each perfect number found. The parameter stop is a long representing
+ * the upper bound of the range to search, and the function returns void because
+ * it does not return a value. The function assumes stop is a positive integer.
+ * If there are no perfect numbers below stop, no perfect numbers are printed.
+ */
 void findPerfectsSmarter(long stop) {
     for (long num = 1; num < stop; num++) {
         if (isPerfectSmarter(num)) {
             cout << "Found smarter perfect number: " << num << endl;
         }
-        if (num % 10000 == 0)
+        if (num % 10000 == 0){
             cout << "." << flush; // progress bar
+        }
+
     }
     cout << endl << "Done searching up to " << stop << endl;
 }
 
+
 /*
-Function description: Finds the nth perfect number using the Euclid formula
-and Mersenne numbers of the form 2^k - 1.
-
-Parameters:
-- long n: The position of the perfect number to find.
-
-Returns:
-- long: The nth perfect number.
-
-Preconditions/assumptions:
-- n is a positive integer.
-*/
+ * Finds the nth perfect number using the Euclid formula and Mersenne numbers of
+ * the form 2^k - 1. The parameter n is a long representing the position of the
+ * perfect number to find, and the function returns a long representing the nth
+ * perfect number. The function assumes n is a positive integer and therefore
+ * does not handle values of n that are 0 or negative.
+ */
 long findNthPerfectEuclid(long n) {
 
-    int count = 0;
-    int k = 1;
+    long count = 0;
+    long k = 1;
 
-    while (count <= n) {
+    while (count < n) {
 
-        // Compute the Mersenne number 2^k - 1
 
-        int m = (pow(2, k)) - 1;
+        long m = (pow(2, k)) - 1;
 
         // A number with divisor sum 1 is prime.
 
         if (divisorSum(m) == 1) {
             count++;
-            if (count == n) {
-                break;
-            }
         }
 
-        k++;
+        if (count < n){
+             k++;
+        }
+
     }
     // Use Euclid's formula to construct the perfect number from k.
     return (pow(2, k - 1)) * (pow(2, k) - 1);

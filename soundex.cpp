@@ -1,8 +1,16 @@
 /*
- * TODO: remove and replace this file header comment
- * This is a .cpp file you will edit and turn in.
- * Remove starter comments and add your own
- * comments on each function and on complex code sections.
+perfect.cpp
+Names: Justin Nguyen, Suhurrith Adhikari
+
+Course: CS 106B
+
+Description: This file implements the Soundex algorithim for encoding surnames
+according to their pronounciation. The program cotains the main Soundex
+function, several helper functions used during the encoding process, and a
+search function that finds surnames with matching Soundex codes in the given
+Stanford surname database. The file also includes a a console program for
+searching names, and student tests to ensure functionality of the individual
+helpers and overall algorithim.
  */
 #include "SimpleTest.h"
 #include "console.h"
@@ -17,13 +25,10 @@ using namespace std;
 
 /*
 Function description: Removes all non-letter characters from the given string.
-
 Parameters:
 - string s: The original input string, which may contain letters and non-letter characters.
-
 Returns:
 - string: A new string that contains only the letters from string s in their original order.
-
 Errors/special cases:
 - If s contains no letters, the function returns an empty string.
 */
@@ -39,13 +44,10 @@ string lettersOnly(string s) {
 
 /*
 Function description: Returns the first character of the given string as an uppercase letter.
-
 Parameters:
 - string s: A string containing only alphabetical characters.
-
 Returns:
 - string: The first character of s converted to uppercase.
-
 Preconditions/assumptions:
 - s contains at least one character.
 */
@@ -55,13 +57,10 @@ string keepFirst(string s) {
 
 /*
 Function description: Converts each alphabetical character in the input string into its matching Soundex digit.
-
 Parameters:
 - string s: A string containing only alphabetical characters.
-
 Returns:
 - string: A string containing the matching Soundex digit for each character in s.
-
 Preconditions/assumptions:
 - s contains only alphabetical characters.
 */
@@ -80,7 +79,7 @@ string encodeLetters(string s) {
         } else if (ch == 'B' || ch == 'F' || ch == 'P' || ch == 'V') {
             result += "1";
         } else if (ch == 'C' || ch == 'G' || ch == 'J' || ch == 'K' || ch == 'Q' ||
-                 ch == 'S' || ch == 'X' || ch == 'Z') {
+                   ch == 'S' || ch == 'X' || ch == 'Z') {
             result += "2";
         } else if (ch == 'D' || ch == 'T') {
             result += "3";
@@ -98,14 +97,11 @@ string encodeLetters(string s) {
 
 /*
 Function description: Removes consecutive duplicate digits from a Soundex code.
-
 Parameters:
 - string s: A string that contains Soundex digits.
-
 Returns:
 - string: A new string where each adjacent group of the same digits are reduced to one digit.
 */
-
 string removeDuplicates(string s) {
 
     string result = s;
@@ -128,17 +124,13 @@ string removeDuplicates(string s) {
 
 /*
 Function description: Removes all zero characters from a Soundex code.
-
 Parameters:
 - string s: A string that contains Soundex digits.
-
 Returns:
 - string: A new string containing all nonzero characters from s in their original order.
-
 Errors/special cases:
 - If s contains only zeros, the function returns an empty string.
 */
-
 string discardZeros(string s) {
     string result = "";
     for (char ch : s) {
@@ -152,14 +144,11 @@ string discardZeros(string s) {
 /*
 Function description: Adjusts a Soundex code to exactly four characters by
 padding shorter codes with zeros and truncating longer codes.
-
 Parameters:
 - string s: The Soundex code to adjust.
-
 Returns:
 - string: A four-character Soundex code.
 */
-
 string addZeros(string s) {
 
     string result = s;
@@ -179,17 +168,13 @@ string addZeros(string s) {
 
 /*
 Function description: Computes the Soundex code for a given surname.
-
 Parameters:
 - string s: The surname to convert into a Soundex code.
-
 Returns:
 - string: The Soundex code corresponding to s.
-
 Preconditions/assumptions:
 - s contains at least one alphabetical character.
 */
-
 string soundex(string s) {
 
     string letters = lettersOnly(s);
@@ -213,18 +198,14 @@ string soundex(string s) {
 
 /*
 Function description: Repeatedly searches a surname database for names that have the same Soundex code as a surname entered by the user.
-
 Parameters:
 - string filepath: The path to the file with the surname database.
-
 Returns:
 - void: This function does not return a value.
-
 Errors/special cases:
 - The search ends when the user presses Return without entering a surname.
 - Matching surnames are printed in sorted order.
 */
-
 void soundexSearch(string filepath) {
 
     ifstream in;
