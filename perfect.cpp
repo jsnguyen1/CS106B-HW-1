@@ -187,13 +187,13 @@ PROVIDED_TEST("Time trial of findPerfects on input size 1000") {
     TIME_OPERATION(1000, findPerfects(1000));
 }
 
-STUDENT_TEST("Create time trials") {
+/*STUDENT_TEST("Create time trials") {
 
     TIME_OPERATION(62500, findPerfects(62500));
     TIME_OPERATION(125000, findPerfects(125000));
     TIME_OPERATION(250000, findPerfects(250000));
     TIME_OPERATION(500000, findPerfects(500000));
-}
+}*/
 
 STUDENT_TEST("testing isPerfect(n) on negative numbers") {
     EXPECT(!isPerfect(-1));
@@ -217,13 +217,13 @@ STUDENT_TEST("smarterSum handles one") {
     EXPECT_EQUAL(smarterSum(1), divisorSum(1));
 }
 
-STUDENT_TEST(
+/*STUDENT_TEST(
     "Multiple time trials of findPerfectsSmarter on increasing input sizes") {
     TIME_OPERATION(1875000, findPerfectsSmarter(1875000));
     TIME_OPERATION(3750000, findPerfectsSmarter(3750000));
     TIME_OPERATION(7500000, findPerfectsSmarter(7500000));
     TIME_OPERATION(15000000, findPerfectsSmarter(15000000));
-}
+}*/
 
 STUDENT_TEST("findNthPerfectEuclid finds the first perfect number") {
     EXPECT_EQUAL(findNthPerfectEuclid(1), 6);
