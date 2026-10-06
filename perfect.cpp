@@ -76,24 +76,22 @@ void findPerfects(long stop) {
 long smarterSum(long n) {
     long total = 0;
 
-    long root = sqrt(n);
-
     if (n == 1) {
         return total;
     }
 
-    for (long divisor = 1; divisor <= root; divisor++) {
+    for (long divisor = 1; divisor <= sqrt(n); divisor++) {
         if (n % divisor == 0) {
             total += divisor;
 
             // Add the paired divisor, avoiding n itself and double-counting a square
             // root.
-
-            if (divisor != 1 && divisor != root) {
+            if (divisor != 1 && divisor != sqrt(n)) {
                 total += n / divisor;
             }
         }
     }
+
     return total;
 }
 
